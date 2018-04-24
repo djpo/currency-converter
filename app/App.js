@@ -13,7 +13,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   updateTextInput: (newText) => {
-    console.log('App > placeholder updateTextInput');
+    dispatch({ type: 'UPDATE_TEXT_INPUT', newText: newText });
+  },
+  pressConvert: () => {
+    dispatch({ type: 'CONVERT' });
   },
 });
 
@@ -29,6 +32,7 @@ const propTypes = {
     })
   ).isRequired,
   updateTextInput: PropTypes.func.isRequired,
+  pressConvert: PropTypes.func.isRequired,
 };
 
 const App = props => (

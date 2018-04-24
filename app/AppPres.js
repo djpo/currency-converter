@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Text,
   TextInput,
+  TouchableHighlight,
   View,
 } from 'react-native';
 
@@ -19,6 +20,7 @@ const propTypes = {
     })
   ).isRequired,
   updateTextInput: PropTypes.func.isRequired,
+  pressConvert: PropTypes.func.isRequired,
 };
 
 const AppPres = props => (
@@ -30,6 +32,7 @@ const AppPres = props => (
     </View>
     <View style={styles.body}>
       <Text style={styles.rowLabel}>FROM</Text>
+
       <View style={styles.row}>
         <View style={styles.currencySelector}>
           <Text style={styles.currencyLabel}>{props.fromCurrency}</Text>
@@ -44,7 +47,16 @@ const AppPres = props => (
           returnKeyType="done"
           blurOnSubmit
         />
+        <TouchableHighlight
+          activeOpacity={0.8}
+          underlayColor="rgb(39,65,94)"
+          style={styles.goButton}
+          onPress={props.pressConvert}
+        >
+          <Text style={styles.goButtonText}>=</Text>
+        </TouchableHighlight>
       </View>
+
       <Text style={styles.rowLabel}>TO</Text>
       <View style={styles.row}>
         <View style={styles.currencySelector}>
@@ -52,6 +64,7 @@ const AppPres = props => (
         </View>
         <Text style={styles.amountOutput}>{props.amountConverted}</Text>
       </View>
+
     </View>
   </View>
 );
@@ -96,9 +109,25 @@ const styles = StyleSheet.create({
   amountInput: {
     width: 120,
     backgroundColor: 'white',
+    borderWidth: 1,
+    borderColor: 'rgb(39,65,94)',
     fontSize: 18,
     padding: 10,
     textAlign: 'right',
+  },
+  goButton: {
+    marginLeft: 30,
+    width: 40,
+    height: 40,
+    backgroundColor: 'rgb(124,165,184)',
+    borderWidth: 1,
+    borderColor: 'rgb(39,65,94)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  goButtonText: {
+    fontSize: 25,
+    color: 'white',
   },
   amountOutput: {
     width: 120,

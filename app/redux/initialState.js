@@ -1,8 +1,8 @@
 const initialState = {
-  fromCurrency: 'EUR',
-  toCurrency: 'USD',
-  amountToConvert: '123.45',
-  amountConverted: '151.08',
+  fromCurrency: 'USD',
+  toCurrency: 'GBP',
+  amountToConvert: '',
+  amountConverted: '',
   rates: [
     { currency: 'USD', rate: '1.2238' },
     { currency: 'JPY', rate: '132.38' },
