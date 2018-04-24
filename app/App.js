@@ -1,44 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
 import { connect } from 'react-redux';
+import AppPres from './AppPres';
 
 const mapStateToProps = state => ({
-  foo: state.foo,
+  fromCurrency: state.fromCurrency,
+  toCurrency: state.toCurrency,
+  amountToConvert: state.amountToConvert,
+  amountConverted: state.amountConverted,
+  rates: state.rates,
 });
 
 const propTypes = {
-  foo: PropTypes.string.isRequired,
+  fromCurrency: PropTypes.string.isRequired,
+  toCurrency: PropTypes.string.isRequired,
+  amountToConvert: PropTypes.string.isRequired,
+  amountConverted: PropTypes.string.isRequired,
+  rates: PropTypes.arrayOf(
+    PropTypes.shape({
+      currency: PropTypes.string.isRequired,
+      rate: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 const App = props => (
-  <View style={styles.container}>
-    <Text style={styles.welcome}>
-      Dummy text #1
-    </Text>
-    <Text style={styles.instructions}>
-      foo: {props.foo}
-    </Text>
-  </View>
+  <AppPres {...props} />
 );
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-});
 
 App.propTypes = propTypes;
 export default connect(
