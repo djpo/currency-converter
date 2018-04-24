@@ -29,6 +29,7 @@ const AppPres = props => (
       </Text>
     </View>
     <View style={styles.body}>
+
       <Text style={styles.rowLabel}>FROM</Text>
       <View style={styles.row}>
         <ModalSelector
@@ -49,15 +50,17 @@ const AppPres = props => (
           returnKeyType="done"
           blurOnSubmit
         />
-        <TouchableHighlight
-          activeOpacity={0.8}
-          underlayColor="rgb(39,65,94)"
-          style={styles.goButton}
-          onPress={props.pressConvert}
-        >
-          <Text style={styles.goButtonText}>=</Text>
-        </TouchableHighlight>
       </View>
+
+      <TouchableHighlight
+        activeOpacity={0.8}
+        underlayColor="rgba(124,165,184,0.5)"
+        style={styles.goButton}
+        onPress={props.pressConvert}
+      >
+        <Text style={styles.goButtonText}>=</Text>
+      </TouchableHighlight>
+
       <Text style={styles.rowLabel}>TO</Text>
       <View style={styles.row}>
         <ModalSelector
@@ -70,6 +73,7 @@ const AppPres = props => (
         />
         <Text style={styles.amountOutput}>{props.amountConverted}</Text>
       </View>
+
     </View>
   </View>
 );
