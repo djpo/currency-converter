@@ -25,6 +25,11 @@ export default function appReducer(state = initialState, action) {
         fromCurrency: action.newVal,
       };
 
+    case 'UPDATE_TO_CURRENCY':
+      return { ...state,
+        toCurrency: action.newVal,
+      };
+
     case 'CONVERT':
       const amount = state.amountToConvert;
       const fromRate = state.rates.find(single => single.currency === state.fromCurrency).rate;

@@ -30,7 +30,6 @@ const AppPres = props => (
     </View>
     <View style={styles.body}>
       <Text style={styles.rowLabel}>FROM</Text>
-
       <View style={styles.row}>
         <ModalSelector
           selectStyle={styles.currencySelector}
@@ -40,7 +39,6 @@ const AppPres = props => (
           onChange={option => props.updateFromCurrency(option.label)}
           animationType="fade"
         />
-
         <TextInput
           style={styles.amountInput}
           value={props.amountToConvert}
@@ -51,7 +49,6 @@ const AppPres = props => (
           returnKeyType="done"
           blurOnSubmit
         />
-
         <TouchableHighlight
           activeOpacity={0.8}
           underlayColor="rgb(39,65,94)"
@@ -60,17 +57,19 @@ const AppPres = props => (
         >
           <Text style={styles.goButtonText}>=</Text>
         </TouchableHighlight>
-
       </View>
-
       <Text style={styles.rowLabel}>TO</Text>
       <View style={styles.row}>
-        <View style={styles.currencySelector}>
-          <Text style={styles.currencyLabel}>{props.toCurrency}</Text>
-        </View>
+        <ModalSelector
+          selectStyle={styles.currencySelector}
+          selectTextStyle={styles.currencyLabel}
+          data={props.currencies.map(currency => ({ key: currency, label: currency }))}
+          initValue={props.toCurrency}
+          onChange={option => props.updateToCurrency(option.label)}
+          animationType="fade"
+        />
         <Text style={styles.amountOutput}>{props.amountConverted}</Text>
       </View>
-
     </View>
   </View>
 );

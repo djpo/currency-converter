@@ -18,6 +18,9 @@ const mapDispatchToProps = dispatch => ({
   updateFromCurrency: (newVal) => {
     dispatch({ type: 'UPDATE_FROM_CURRENCY', newVal: newVal });
   },
+  updateToCurrency: (newVal) => {
+    dispatch({ type: 'UPDATE_TO_CURRENCY', newVal: newVal });
+  },
   pressConvert: () => {
     dispatch({ type: 'CONVERT' });
   },
@@ -31,6 +34,7 @@ const propTypes = {
   amountConverted: PropTypes.string.isRequired,
   updateInputAmount: PropTypes.func.isRequired,
   updateFromCurrency: PropTypes.func.isRequired,
+  updateToCurrency: PropTypes.func.isRequired,
   pressConvert: PropTypes.func.isRequired,
 };
 
