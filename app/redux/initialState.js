@@ -1,4 +1,5 @@
 const initialState = {
+  isLoading: false,
   fromCurrency: 'USD',
   toCurrency: 'GBP',
   amountToConvert: '',

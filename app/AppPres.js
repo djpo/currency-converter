@@ -8,9 +8,11 @@ import {
   View,
 } from 'react-native';
 import ModalSelector from 'react-native-modal-selector';
+import LoadingLayer from './components/LoadingLayer';
 import styles from './AppStyles';
 
 const propTypes = {
+  isLoading: PropTypes.bool.isRequired,
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
   fromCurrency: PropTypes.string.isRequired,
   toCurrency: PropTypes.string.isRequired,
@@ -77,6 +79,7 @@ const AppPres = props => (
       </View>
 
     </View>
+    {props.isLoading ? <LoadingLayer /> : null}
   </View>
 );
 
