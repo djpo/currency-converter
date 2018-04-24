@@ -62,7 +62,7 @@ const AppStyles = StyleSheet.create({
   },
   amountOutputText: {
     fontSize: 18,
-    color: 'rgb(39,65,94)',
+    color: 'black',
   },
   goButton: {
     alignSelf: 'flex-end',
@@ -77,7 +77,7 @@ const AppStyles = StyleSheet.create({
     justifyContent: 'center',
   },
   goButtonText: {
-    fontSize: 25,
+    fontSize: 28,
     color: 'white',
   },
 });

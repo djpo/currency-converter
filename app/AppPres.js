@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Picker,
+  Platform,
   Text,
   TextInput,
   TouchableHighlight,
@@ -10,6 +11,11 @@ import {
 import ModalSelector from 'react-native-modal-selector';
 import LoadingLayer from './components/LoadingLayer';
 import styles from './AppStyles';
+
+const platformSelectionColor = (Platform.OS === 'android')
+  ? 'rgba(174,209,167,0.3)' // android
+  : 'rgb(174,209,167)' // ios
+;
 
 const propTypes = {
   isLoading: PropTypes.bool.isRequired,
@@ -47,6 +53,8 @@ const AppPres = props => (
           value={props.amountToConvert}
           onChangeText={newText => props.updateInputAmount(newText)}
           placeholder="123.45"
+          selectionColor={platformSelectionColor}
+          underlineColorAndroid="transparent" // android only
           autoCorrect={false}
           keyboardType="numeric"
           returnKeyType="done"
