@@ -15,9 +15,14 @@ function convert(amount, fromRate, toRate) {
 export default function appReducer(state = initialState, action) {
   switch (action.type) {
 
-    case 'UPDATE_TEXT_INPUT':
+    case 'UPDATE_INPUT_AMOUNT':
       return { ...state,
         amountToConvert: action.newText,
+      };
+
+    case 'UPDATE_FROM_CURRENCY':
+      return { ...state,
+        fromCurrency: action.newVal,
       };
 
     case 'CONVERT':

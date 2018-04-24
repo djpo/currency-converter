@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  Picker,
   Text,
   TextInput,
   TouchableHighlight,
@@ -8,18 +9,24 @@ import {
 } from 'react-native';
 import styles from './AppStyles';
 
+function renderPickerOptions(currencies) {
+  return currencies.map(currency => (
+    <Picker.Item
+      key={currency}
+      label={currency}
+      value={currency}
+    />
+  ));
+}
+
 const propTypes = {
+  currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
   fromCurrency: PropTypes.string.isRequired,
   toCurrency: PropTypes.string.isRequired,
   amountToConvert: PropTypes.string.isRequired,
   amountConverted: PropTypes.string.isRequired,
-  rates: PropTypes.arrayOf(
-    PropTypes.shape({
-      currency: PropTypes.string.isRequired,
-      rate: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  updateTextInput: PropTypes.func.isRequired,
+  updateInputAmount: PropTypes.func.isRequired,
+  updateFromCurrency: PropTypes.func.isRequired,
   pressConvert: PropTypes.func.isRequired,
 };
 
@@ -34,19 +41,28 @@ const AppPres = props => (
       <Text style={styles.rowLabel}>FROM</Text>
 
       <View style={styles.row}>
-        <View style={styles.currencySelector}>
-          <Text style={styles.currencyLabel}>{props.fromCurrency}</Text>
+
+        <View style={styles.pickerContainer}>
+          <Picker
+            selectedValue={props.fromCurrency}
+            style={styles.picker}
+            onValueChange={newVal => props.updateFromCurrency(newVal)}
+          >
+            {renderPickerOptions(props.currencies)}
+          </Picker>
         </View>
+
         <TextInput
           style={styles.amountInput}
           value={props.amountToConvert}
-          onChangeText={newText => props.updateTextInput(newText)}
+          onChangeText={newText => props.updateInputAmount(newText)}
           placeholder="123.45"
           autoCorrect={false}
           keyboardType="numeric"
           returnKeyType="done"
           blurOnSubmit
         />
+
         <TouchableHighlight
           activeOpacity={0.8}
           underlayColor="rgb(39,65,94)"
@@ -55,6 +71,7 @@ const AppPres = props => (
         >
           <Text style={styles.goButtonText}>=</Text>
         </TouchableHighlight>
+
       </View>
 
       <Text style={styles.rowLabel}>TO</Text>
