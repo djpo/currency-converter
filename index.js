@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import App from './App';
+import AppWithStore from './app/AppWithStore';
 
-AppRegistry.registerComponent('currencyconverter', () => App);
+AppRegistry.registerComponent('currencyconverter', () => AppWithStore);
