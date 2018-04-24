@@ -71,7 +71,9 @@ const AppPres = props => (
           onChange={option => props.updateToCurrency(option.label)}
           animationType="fade"
         />
-        <Text style={styles.amountOutput}>{props.amountConverted}</Text>
+        <View style={styles.amountOutputContainer}>
+          <Text style={styles.amountOutputText}>{props.amountConverted}</Text>
+        </View>
       </View>
 
     </View>
