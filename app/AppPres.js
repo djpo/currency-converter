@@ -7,17 +7,8 @@ import {
   TouchableHighlight,
   View,
 } from 'react-native';
+import ModalSelector from 'react-native-modal-selector';
 import styles from './AppStyles';
-
-function renderPickerOptions(currencies) {
-  return currencies.map(currency => (
-    <Picker.Item
-      key={currency}
-      label={currency}
-      value={currency}
-    />
-  ));
-}
 
 const propTypes = {
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -41,16 +32,14 @@ const AppPres = props => (
       <Text style={styles.rowLabel}>FROM</Text>
 
       <View style={styles.row}>
-
-        <View style={styles.pickerContainer}>
-          <Picker
-            selectedValue={props.fromCurrency}
-            style={styles.picker}
-            onValueChange={newVal => props.updateFromCurrency(newVal)}
-          >
-            {renderPickerOptions(props.currencies)}
-          </Picker>
-        </View>
+        <ModalSelector
+          selectStyle={styles.currencySelector}
+          selectTextStyle={styles.currencyLabel}
+          data={props.currencies.map(currency => ({ key: currency, label: currency }))}
+          initValue={props.fromCurrency}
+          onChange={option => props.updateFromCurrency(option.label)}
+          animationType="fade"
+        />
 
         <TextInput
           style={styles.amountInput}

@@ -27,20 +27,12 @@ const AppStyles = StyleSheet.create({
     marginBottom: 30,
     flexDirection: 'row',
   },
-  pickerContainer: {
-    minWidth: 100,
-    minHeight: 100,
-    borderWidth: 1,
-    borderColor: 'red',
-  },
-  picker: {
-    borderWidth: 1,
-    borderColor: 'blue',
-  },
   currencySelector: {
     marginLeft: 20,
     marginRight: 30,
     backgroundColor: 'rgb(174,209,167)',
+    borderWidth: 0,
+    borderRadius: 2,
     padding: 10,
   },
   currencyLabel: {
