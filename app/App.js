@@ -11,6 +11,12 @@ const mapStateToProps = state => ({
   rates: state.rates,
 });
 
+const mapDispatchToProps = dispatch => ({
+  updateTextInput: (newText) => {
+    console.log('App > placeholder updateTextInput');
+  },
+});
+
 const propTypes = {
   fromCurrency: PropTypes.string.isRequired,
   toCurrency: PropTypes.string.isRequired,
@@ -22,6 +28,7 @@ const propTypes = {
       rate: PropTypes.string.isRequired,
     })
   ).isRequired,
+  updateTextInput: PropTypes.func.isRequired,
 };
 
 const App = props => (
@@ -31,4 +38,5 @@ const App = props => (
 App.propTypes = propTypes;
 export default connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(App);
